@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Responsive Portfolio",
   "main": "index.js",
-  "homepage": "https://BunnyHunter.github.io/portfolio",
+  "homepage": "https://BunnyHunter.github.io/porfolio",
   "scripts": {
     "test": "node-sass -w scss/ -o dist/css/ --recursive",
     "deploy":"gh-pages -d dist"
