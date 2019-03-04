@@ -1,0 +1,120 @@
+//Menu Button
+.menu-btn{
+position: absolute;
+z-index: 3;
+right: 35px;
+top: 35px;
+cursor:pointer;
+@include easeOut;
+.btn-line{
+width: 28px;
+height: 3px;
+margin: 0 0 5px 0;
+background: #fff;
+@include easeOut;
+}
+//Change to X
+&.close{
+transform: rotate(180deg);
+.btn-line{
+// Line 1-Rotate
+&:nth-child(1){
+transform: rotate(45deg) translate(5px,5px);
+}
+// Line 2-Hide
+&:nth-child(2){
+opacity: 0;    
+}
+// Line 3-Rotate
+&:nth-child(3){
+    transform: rotate(-45deg) translate(7px,-6px);
+}
+}
+}
+}
+// Create Menu Overlay 
+.menu{
+position: fixed;
+top: 0;
+width: 100%;
+opacity: 0.9;
+visibility: hidden;
+&.show{
+visibility: visible;
+}
+&-branding, &-nav{
+display: flex;
+flex-flow: column wrap;
+align-items: center;
+justify-content: center;
+float: left;
+width: 50%;
+height: 100vh;
+overflow: hidden;
+}
+&-nav{
+margin: 0;
+padding: 0;
+background: darken($primary-color, 5);
+list-style: none;
+transform: translate3d(0,-100%,0);
+@include easeOut;
+&.show{
+    //Slide in From Top 
+    transform: translate3d(0,0,0);
+}
+}
+//Branding
+&-branding{
+background: $primary-color;
+transform: translate3d(0,100%,0);
+@include easeOut;
+
+&.show{
+    //Slide in From botton 
+    transform: translate3d(0,0,0);
+}
+.portrait{
+   width: 250px;
+   height: 250px;
+   background: url(data:image/png;base64,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);
+   border-radius: 50%;
+   border: solid 3px $secondary-color;
+}
+}
+.nav-item {
+transform:  translate3d(600px
+);
+@include easeOut;
+
+
+&.show{
+    //Slide in From right
+    transform: translate3d(0,0,0);
+}
+&.current > a{
+color: #fff;
+}
+}
+.nav-link{
+color: set-text-color($secondary-color);
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+display: inline-block;
+position: relative;
+font-size: 30px;
+text-transform: uppercase;
+padding: 1rem, 0;
+font-weight: 300;
+text-decoration: none;
+@include easeOut;
+&:hover{
+color: #fff    
+}
+}
+}
+// Delay each nav Item slide by 0.1s
+@for $x from 1 through 4 {
+.nav-item:nth-child(#{$x}) {
+transition-delay: $x * 0.1s;    
+}
+}
